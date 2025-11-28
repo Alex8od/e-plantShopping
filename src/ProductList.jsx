@@ -6,7 +6,10 @@ import { addItem } from './CartSlice';
 
 function ProductList({ onHomeClick }) {
   const dispatch = useDispatch();
+
+  // Cart-Items aus dem Redux-Store holen
   const cartItems = useSelector((state) => state.cart.items);
+
   const [showCart, setShowCart] = useState(false);
   const [showPlants, setShowPlants] = useState(false);
   const [addedToCart, setAddedToCart] = useState({});
@@ -271,6 +274,7 @@ function ProductList({ onHomeClick }) {
     }));
   };
 
+  // Gesamtanzahl aller Items im Warenkorb (Task 4)
   const calculateTotalQuantity = () => {
     return cartItems && cartItems.length > 0
       ? cartItems.reduce((total, item) => total + item.quantity, 0)
@@ -295,16 +299,16 @@ function ProductList({ onHomeClick }) {
           <div>
             <a href="#" onClick={handlePlantsClick} style={styleA}>Plants</a>
           </div>
-         <div>
+          <div>
             <a href="#" onClick={handleCartClick} style={styleA}>
-             <div className="cart-wrapper">
-             <h1 className='cart'>
-          {/* dein SVG */}
-         </h1>
-          <span className="cart-count">{calculateTotalQuantity()}</span>
-        </div>
-        </a>
-        </div>
+              <div className="cart-wrapper">
+                <h1 className='cart'>
+                  {/* dein SVG hier */}
+                </h1>
+                <span className="cart-count">{calculateTotalQuantity()}</span>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
 
